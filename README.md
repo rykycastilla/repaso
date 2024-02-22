@@ -40,6 +40,7 @@ char letra = 'A'
 ### Reglas de nombres para las variables
  - Los nombres de variables pueden contener letras, números y guiones bajos
  - Los nombres de variables nunca pueden empezar por un número
+ - No pueden existir variables con el mismo nombre
 
 ## Entrada y Salida por consola
 
@@ -142,3 +143,89 @@ Ej:
 bool a = 7 < 8,  // true
   b = 7 == 8;  // false
 ```
+
+### Booleanos (o lógicos)
+Los operadores lógicos permiten trabajar con operadores boolean (verdadero o falso)
+ - OR **||**: Es equivalente a una disyunción. La expresión será analizada como verdadera si al menos uno de sus valores lo es
+ ``` CPP
+ bool a = true || true,  // true
+  b = true || false,  // true
+  c = false || false;  // false
+ ```
+ - AND **&&**: Es equivalente a una conjunción. La expresión solo será verdadera si sus dos valores lo son
+ ``` CPP
+ bool a = true && true,  // true
+  b = true && false,  // false
+  c = false && false;  // false
+ ```
+ - NOT **!**: Es equivalente a una negación. La expresión será verdadera si es falsa y falsa si es verdadera
+``` CPP
+ bool a = !true,  // false
+  b = !false;  // true
+ ```
+
+## Estructuras de control condicionales
+Las estructuras de control condicionales permiten que el programa tome decisiones basadas en el resultado de una expresión booleana (algo que resulte en verdadero o falso, como una comparación)
+
+### if
+Si la condición (entre los paréntesis) es verdadera, entocnes se ejecuta el código entre las llaves
+``` CPP
+int x = 5;
+if( x > 1 ) {
+  cout << "x es mayor que 1" << endl;  // Salida
+}
+```
+
+### else
+La sentencia `else` solo se puede colocar a continuación de un `if` o un `else if`. El código entre sus llaves se ejecutará solo si la condición del `if` es falsa
+``` CPP
+int x = 1;
+if( x > 1 ) {
+  cout << "x es mayor que 1" << endl;
+}
+else {
+  cout << "x es menor o igual a 1" << endl;  // Salida
+}
+```
+
+### else if
+La sentencia `else if` solo se puede colocar a continuación de un `if` u otro `else if`. Su código solo se ejecutará si las expresiones del `if` o los `else if` anteriores son falsas y la suya es verdadera
+``` CPP
+int x = -1;
+if( x > 1 ) {
+  cout << "x es mayor que 1" << endl;
+}
+else if( x == -1 ) {
+  cout << "x es exactamente igual a -1" << endl;  // Salida
+}
+else {
+  cout << "x es menor o igual a 1" << endl;
+}
+```
+
+## Estructuras de control de ciclos
+Las estructuras de control de ciclo permiten ejecutar el código varias veces, en dependecia de una condición
+
+### while
+El bucle while se ejecutará hasta que su condición sea falsa
+``` CPP
+// Imprime hola tres veces
+int holasRestantes = 3;
+while( holasRestantes > 0 ) {  // Solo se ejecuta si la cantidad de holas es mayor que 0
+  cout << "Hola" << endl;  // Diciendo hola
+  holasRestantes--;  // Disminuyendo la cantidad de holas que quedan por decir
+}
+```
+
+### for
+El `for` permite declarar una variable de control que representará la cantidad de iteraciones (veces que se repite) el bucle. Su estructura es: `for( declaracion; condicion; actualizacion ) { codigo }`
+Primero se realizará la `declaracion`, aquí se instanciará la variable de control; luego se verificará si la `condicion` es verdadera, en ese caso, se ejecutará el `codigo`, después del código se ejecuta la etapa de `actualizacion`, en la que se modificará el valor de la variable de control para eventualmente interrumpir la `condicion`
+``` CPP
+// Ejemplo anterior utilizando for
+int holas;
+cin >> holas;
+for( int i = 0; i < holas; i++ ) {
+  cout << "Hola" << endl;
+}
+```
+> Consejo: Utiliza el **for** solamente si conoces la cantidad de veces que deseas repetir la acción, en caso contrario, utiliza **while**
